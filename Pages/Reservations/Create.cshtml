@@ -1,0 +1,67 @@
+﻿@page
+@model proiect_hotel2.Pages.Reservations.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Reservation.GuestID" class="control-label">Guest Name</label>
+                <select asp-for="Reservation.GuestID" class="form-control" asp-items="ViewBag.GuestID">
+                </select>
+                <span asp-validation-for="Reservation.GuestID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.Email" class="control-label"></label>
+                <input asp-for="Reservation.Email" class="form-control" />
+                <span asp-validation-for="Reservation.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.ArrivalDateTime" class="control-label"></label>
+                <input asp-for="Reservation.ArrivalDateTime" class="form-control" />
+                <span asp-validation-for="Reservation.ArrivalDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.DepartureDateTime" class="control-label"></label>
+                <input asp-for="Reservation.DepartureDateTime" class="form-control" />
+                <span asp-validation-for="Reservation.DepartureDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.RoomNumber" class="control-label"></label>
+                <input asp-for="Reservation.RoomNumber" class="form-control" />
+                <span asp-validation-for="Reservation.RoomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.CategoryID" class="control-label">Room Type</label>
+                <select asp-for="Reservation.CategoryID" class="form-control" asp-items="ViewBag.CategoryID">
+                </select>
+                <span asp-validation-for="Reservation.CategoryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.NumberOfPeople" class="control-label"></label>
+                <input asp-for="Reservation.NumberOfPeople" class="form-control" />
+                <span asp-validation-for="Reservation.NumberOfPeople" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-danger mx-1">Back</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

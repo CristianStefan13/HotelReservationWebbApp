@@ -1,0 +1,102 @@
+﻿@page "/"
+@model proiect_hotel2.Pages.Reservations.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Reservations</h1>
+
+<p>
+    <a asp-page="Create"class="btn btn-primary">Create New</a>
+    
+</p>
+<br />
+<form asp-controller="Index" asp-action="Index" method="get">
+    <p>
+        Search By Guest Name/Email/Room Type : <input type="text" name="searchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               
+                <a asp-page="./Index" asp-route-sortOrder="@Model.GuestNameSort">
+                    @Html.DisplayNameFor(model => model.Reservation[0].Guest.GuestName)
+                    </a>
+            </th>
+
+            <th>
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.EmailSort">
+                @Html.DisplayNameFor(model => model.Reservation[0].Email)
+                </a>
+            </th>
+            <th>
+                 
+                @Html.DisplayNameFor(model => model.Reservation[0].ArrivalDateTime)
+                
+            </th>
+            <th>
+                
+                @Html.DisplayNameFor(model => model.Reservation[0].DepartureDateTime)
+                
+            </th>
+            <th>
+               
+                @Html.DisplayNameFor(model => model.Reservation[0].RoomNumber)
+                
+
+            </th>
+            <th>
+                
+                @Html.DisplayNameFor(model => model.Reservation[0].Category.CategoryName)
+                
+
+            </th>
+
+            <th>
+               
+                @Html.DisplayNameFor(model => model.Reservation[0].NumberOfPeople)
+               
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Reservation) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestName)
+                </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfPeople)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

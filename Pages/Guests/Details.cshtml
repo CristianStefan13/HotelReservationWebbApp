@@ -1,0 +1,36 @@
+﻿@page
+@model proiect_hotel2.Pages.Guests.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Guest</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Guest.GuestName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Guest.GuestName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Guest.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Guest.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Guest.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Guest.Phone)
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Guest?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
